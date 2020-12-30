@@ -4,7 +4,7 @@
   "description": "Plain JS app that communicates with NBA API",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development --open Chrome.exe"
+
   },
   "repository": {
     "type": "git",
