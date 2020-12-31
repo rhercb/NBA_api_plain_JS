@@ -2,6 +2,8 @@
  * Helper consists of multiple helper functions that are used across whole APP
  */
 
+import { TIMEOUT_SEC } from "./config";
+
 /**
  * Creates a timouet after x sec have gone by
  * @param {number} s max amout of secounds for request to process
@@ -29,6 +31,8 @@ export const AJAX = async function (url) {
     const data = await res.json();
 
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+
+    return data;
   } catch (err) {
     throw err;
   }
