@@ -20,8 +20,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(scss|css)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+          {
+            loader: "sass-loader",
+          },
+        ],
       },
       {
         test: /\.js$/,
