@@ -1,1 +1,15 @@
-@import "./base";
+/*============== ABSTRACTS ===========*/
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
+/*============== ABSTRACTS ===========*/
+
+/*============== COMPONENTS ===========*/
+/*============== COMPONENTS ===========*/
+
+/*============== LAYOUT ===========*/
+@import "./layout/header";
+/*============== LAYOUT ===========*/
+
+/*============== PAGES ===========*/
+@import "./pages/home";
+/*============== PAGES ===========*/
