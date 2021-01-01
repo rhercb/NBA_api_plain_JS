@@ -1,0 +1,38 @@
+.team__wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 0;
+  padding: 1rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:hover {
+    cursor: pointer;
+    .team__image {
+      transform: rotateY(360deg);
+    }
+  }
+  .team__image {
+    transition: all 2s;
+    img {
+      width: 15rem;
+      height: 15rem;
+      object-fit: contain;
+    }
+  }
+  .team__info {
+    margin: auto;
+    .team__name {
+      display: flex;
+      flex-direction: row;
+      color: white;
+      font-size: 3rem;
+      .team__name--city {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
