@@ -13,16 +13,8 @@ const controlTeams = async function () {
   }
 };
 
-const controlTeamsPlayer = async function (teamKey) {
-  try {
-    await model.loadTeamsPlayers(teamKey);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 const init = function () {
   controlTeams();
-  teamsView.addHandlerShowTeamPlayers(controlTeamsPlayer);
 };
-init();
+
+export default new init();

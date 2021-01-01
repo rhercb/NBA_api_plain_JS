@@ -4,15 +4,6 @@ class TeamsView extends View {
   _parentElement = document.querySelector(".body__teams");
   _errorMessage = "Sorry, but we could not get a data from API call.";
 
-  addHandlerShowTeamPlayers(handler) {
-    this._parentElement.addEventListener("click", function (e) {
-      const teamElement = e.target.closest(".team__wrapper");
-      if (!teamElement) return;
-      const teamKey = teamElement.dataset.teamKey;
-      handler(teamKey);
-    });
-  }
-
   _generateMarkup() {
     return this._data.data
       .map((results) => this._generateSingleMarkup(results))
