@@ -1,6 +1,6 @@
 import * as model from "../model";
-import teamsInfoView from "../views/teamsInfoView";
-import teamsView from "../views/teamsView";
+import teamsInfoView from "../views/Teams/teamsInfoView";
+import teamsView from "../views/Teams/teamsView";
 
 const controlTeams = async function () {
   try {

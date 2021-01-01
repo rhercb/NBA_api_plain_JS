@@ -1,4 +1,4 @@
-import View from "./View";
+import View from "../View";
 
 class TeamsView extends View {
   _parentElement = document.querySelector(".body__teams");

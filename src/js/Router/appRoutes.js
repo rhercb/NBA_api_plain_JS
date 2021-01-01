@@ -14,6 +14,6 @@ router
   .add(/teams\/(.*)/, (key) => {
     teamsControlTeamsPlayer(key);
   })
-  .add("", () => {
+  .add(/teams/, () => {
     teamsControlTeams();
   });
