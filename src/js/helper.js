@@ -30,7 +30,7 @@ export const AJAX = async function (url) {
 
     const data = await res.json();
 
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    if (!res.ok) throw new Error(`(${res.status})`);
 
     return data;
   } catch (err) {

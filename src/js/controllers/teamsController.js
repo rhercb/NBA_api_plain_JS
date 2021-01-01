@@ -1,7 +1,9 @@
-import * as teamsModel from "../models/teamsModel";
+import * as model from "../model";
+import teamsView from "../views/teamsView";
 
 const controlTeams = async function () {
-  await teamsModel.loadTeams();
+  await model.loadTeams();
+  teamsView.render(model.appData.teams);
 };
 
 controlTeams();
