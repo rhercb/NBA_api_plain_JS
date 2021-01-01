@@ -1,6 +1,9 @@
 import Router from "./Router";
 
-import teamsController from "../controllers/teamsController";
+import {
+  controlTeams as teamsControlTeams,
+  controlTeamsPlayer as teamsControlTeamsPlayer,
+} from "../controllers/teamsController";
 
 const router = new Router({
   mode: "hash",
@@ -8,12 +11,9 @@ const router = new Router({
 });
 
 router
-  .add(/player\/(.*)/, (id) => {
-    console.log(`player with id: ${id}`);
-  })
-  .add(/products\/(.*)\/specification\/(.*)/, (id, specification) => {
-    alert(`products: ${id} specification: ${specification}`);
+  .add(/teams\/(.*)/, (key) => {
+    teamsControlTeamsPlayer(key);
   })
   .add("", () => {
-    teamsController.init;
+    teamsControlTeams();
   });

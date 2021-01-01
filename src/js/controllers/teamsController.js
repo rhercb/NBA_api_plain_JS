@@ -13,8 +13,12 @@ const controlTeams = async function () {
   }
 };
 
-const init = function () {
-  controlTeams();
+const controlTeamsPlayer = async function (teamKey) {
+  try {
+    await model.loadTeamsPlayers(teamKey);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-export default new init();
+export { controlTeams, controlTeamsPlayer };
