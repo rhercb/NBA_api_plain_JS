@@ -2,6 +2,7 @@ import View from "./View";
 
 class TeamsView extends View {
   _parentElement = document.querySelector(".body__teams");
+  _errorMessage = "Sorry, but we could not get a data from API call.";
 
   addHandlerShowTeamPlayers(handler) {
     this._parentElement.addEventListener("click", function (e) {

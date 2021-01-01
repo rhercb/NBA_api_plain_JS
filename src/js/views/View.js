@@ -10,7 +10,8 @@ export default class View {
    * @this {Object} View instance
    */
   render(data, render = true) {
-    if (!data || (Array.isArray(data) && data.length === 0)) return;
+    if (!data || (Array.isArray(data) && data.length === 0))
+      return this.renderError();
 
     this._data = data;
     const markup = this._generateMarkup();
@@ -23,5 +24,17 @@ export default class View {
 
   _clear() {
     this._parentElement.innerHTML = "";
+  }
+
+  renderSpinner() {
+    const markup = `<div class="spinner">TEST</div>`;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  renderError(message = this._errorMessage) {
+    const markup = `<div class="error"><p>${message}</p></div>`;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }

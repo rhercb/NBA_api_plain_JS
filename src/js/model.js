@@ -42,7 +42,7 @@ export const loadTeams = async function () {
       appData.teams.data.push(createTeamData(element));
     });
   } catch (error) {
-    console.error(error);
+    throw err;
   }
 };
 
@@ -53,6 +53,6 @@ export const loadTeamsPlayers = async function (teamKey) {
     );
     console.log(data);
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
