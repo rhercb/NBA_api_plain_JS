@@ -14,7 +14,7 @@ class TeamsView extends View {
   }
 
   _generateMarkup() {
-    return this._data.data
+    return this._data
       .map((results) => this._generateSingleMarkup(results))
       .join("");
   }

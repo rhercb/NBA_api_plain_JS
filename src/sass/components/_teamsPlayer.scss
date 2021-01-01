@@ -1,0 +1,24 @@
+.player__wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .player__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .player__info--about {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .player__info--data {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}

@@ -27,7 +27,7 @@ export default class View {
   }
 
   renderSpinner() {
-    const markup = `<div class="spinner">TEST</div>`;
+    const markup = `<div class="spinner"><svg><use href="../../assets/nba-logo.svg"></use></svg></div>`;
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }

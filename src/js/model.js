@@ -46,12 +46,35 @@ export const loadTeams = async function () {
   }
 };
 
+const createTeamPlayerData = function (data) {
+  return {
+    id: data.PlayerID,
+    team: data.Team,
+    jersey: data.Jersey,
+    positionCategory: data.PositionCategory,
+    position: data.Position,
+    name: data.FirstName,
+    surname: data.LastName,
+    height: data.Height,
+    weight: data.Weight,
+    birth: data.BirthDate,
+    birthCity: data.BirthCity,
+    college: data.College,
+    salary: data.Sallary,
+    photo: data.PhotoUrl,
+    experience: data.Experience,
+  };
+};
+
 export const loadTeamsPlayers = async function (teamKey) {
   try {
+    appData.teams.players = [];
     const data = await AJAX(
       `${API_URL}${API_TEAMS_PLAYERS_CALL_URL}${teamKey}?key=${API_KEY}`
     );
-    console.log(data);
+    data.forEach((element) => {
+      appData.teams.players.push(createTeamPlayerData(element));
+    });
   } catch (err) {
     throw err;
   }
