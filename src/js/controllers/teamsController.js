@@ -6,4 +6,12 @@ const controlTeams = async function () {
   teamsView.render(model.appData.teams);
 };
 
-controlTeams();
+const controlTeamsPlayer = async function (teamKey) {
+  await model.loadTeamsPlayers(teamKey);
+};
+
+const init = function () {
+  controlTeams();
+  teamsView.addHandlerShowTeamPlayers(controlTeamsPlayer);
+};
+init();

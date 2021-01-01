@@ -1,8 +1,16 @@
-import { API_URL, API_KEY, API_TEAMS_CALL_URL } from "./config";
+import {
+  API_URL,
+  API_KEY,
+  API_TEAMS_CALL_URL,
+  API_TEAMS_PLAYERS_CALL_URL,
+} from "./config";
 import { AJAX } from "./helper";
 
 export const appData = {
-  teams: [],
+  teams: {
+    data: [],
+    players: [],
+  },
 };
 
 /**
@@ -31,9 +39,20 @@ export const loadTeams = async function () {
   try {
     const data = await AJAX(`${API_URL}${API_TEAMS_CALL_URL}?key=${API_KEY}`);
     data.forEach((element) => {
-      appData.teams.push(createTeamData(element));
+      appData.teams.data.push(createTeamData(element));
     });
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const loadTeamsPlayers = async function (teamKey) {
+  try {
+    const data = await AJAX(
+      `${API_URL}${API_TEAMS_PLAYERS_CALL_URL}${teamKey}?key=${API_KEY}`
+    );
+    console.log(data);
+  } catch (err) {
+    console.error(err);
   }
 };

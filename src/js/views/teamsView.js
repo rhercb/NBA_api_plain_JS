@@ -3,8 +3,17 @@ import View from "./View";
 class TeamsView extends View {
   _parentElement = document.querySelector(".body__teams");
 
+  addHandlerShowTeamPlayers(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const teamElement = e.target.closest(".team__wrapper");
+      if (!teamElement) return;
+      const teamKey = teamElement.dataset.teamKey;
+      handler(teamKey);
+    });
+  }
+
   _generateMarkup() {
-    return this._data
+    return this._data.data
       .map((results) => this._generateSingleMarkup(results))
       .join("");
   }
