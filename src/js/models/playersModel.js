@@ -26,7 +26,7 @@ const createPlayerInfoData = function (data) {
     birth: data.BirthDate,
     birthCity: data.BirthCity,
     college: data.College,
-    salary: data.Sallary,
+    salary: data.Salary,
     photo: data.PhotoUrl,
     experience: data.Experience,
   };
