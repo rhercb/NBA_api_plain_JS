@@ -1,5 +1,6 @@
 export default class View {
   _data; // private variable decleration
+  _loaderParent = document.querySelector("body");
 
   /**
    * JSDoc
@@ -27,9 +28,14 @@ export default class View {
   }
 
   renderSpinner() {
-    const markup = `<div class="spinner"><svg><use href="../../assets/nba-logo.svg"></use></svg></div>`;
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    this._loaderParent.classList.add("no-scoll");
+    const markup = `<div id="spinner" class="spinner"></div>`;
+    this._loaderParent.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  removeSpinner() {
+    document.getElementById("spinner").remove();
+    this._loaderParent.classList.remove("no-scoll");
   }
 
   renderError(message = this._errorMessage) {

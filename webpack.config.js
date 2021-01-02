@@ -16,6 +16,9 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
+  resolve: {
+    extensions: ["*", ".js", ".scss"],
+  },
   mode: "none",
   module: {
     rules: [
@@ -29,6 +32,10 @@ module.exports = {
             loader: "sass-loader",
           },
         ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
+        use: ["file-loader"],
       },
       {
         test: /\.js$/,
