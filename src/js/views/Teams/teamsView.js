@@ -20,7 +20,7 @@ class TeamsView extends View {
   }
 
   _generateSingleMarkup(data) {
-    return `<a href="#/teams/${data.key}" data-team-key="${data.key}" class="team__wrapper col-12" style="background-color: #${data.primaryColor}70">
+    return `<a href="#/teams/${data.key}" data-team-key="${data.key}" class="team__wrapper ${data.key} col-12">
                 <div class="team__image">
                     <img src="${data.logo}"/>
                 </div>
