@@ -1,6 +1,7 @@
 export default class View {
   _data; // private variable decleration
   _loaderParent = document.querySelector("body");
+  _body = document.getElementById("body");
 
   /**
    * JSDoc
@@ -42,5 +43,18 @@ export default class View {
     const markup = `<div class="error"><p>${message}</p></div>`;
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  /**
+   * Function that hides and shows blocks with certain ID
+   * @param {String} elementID Element ID from DOM
+   */
+  renderBodyElements(elementID) {
+    const elementList = this._body.children;
+    for (let item of elementList) {
+      item.id === elementID
+        ? item.classList.remove("hidden")
+        : item.classList.add("hidden");
+    }
   }
 }

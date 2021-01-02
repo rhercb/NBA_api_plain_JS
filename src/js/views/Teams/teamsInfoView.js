@@ -1,7 +1,7 @@
 import View from "../View";
 
 class TeamsView extends View {
-  _parentElement = document.querySelector(".body__teams");
+  _parentElement = document.getElementById("team-info");
   _errorMessage = "Sorry, but we could not get infomation about this team";
 
   _generateMarkup() {
