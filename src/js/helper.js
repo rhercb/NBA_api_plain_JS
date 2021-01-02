@@ -37,3 +37,52 @@ export const AJAX = async function (url) {
     throw err;
   }
 };
+
+/**
+ * Converts weight into KG
+ * @param {Number} weightInLbs Weight in LBS
+ */
+export const convertWeight = function (weightInLbs) {
+  return `${weightInLbs}lb (${Math.ceil(weightInLbs / 2.2046)}kg)`;
+};
+
+/**
+ * Converts height from inches to Feet and inches | Meters and cm
+ * @param {Number} heightInInches Height in inches
+ */
+export const convertHeight = function (heightInInches) {
+  const heightInFeetAndInches = parseFloat(heightInInches * 0.083333)
+    .toFixed(1)
+    .replace(".", "'");
+
+  const heightInMeters = parseFloat(heightInInches / 39.37).toFixed(2);
+
+  return `${heightInFeetAndInches}" (${heightInMeters}m)`;
+};
+
+/**
+ * Converts date to US date
+ * @param {String} date Date
+ */
+export const convertDate = function (date) {
+  const oldDate = new Date(date);
+  const newDate = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(oldDate);
+  return newDate;
+};
+
+/**
+ * Converts salary to USD with all commas
+ * @param {Number} salary Sallary number
+ */
+export const convertSalary = function (salary) {
+  const newSalary = new Intl.NumberFormat("es-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  return newSalary.format(salary);
+};
