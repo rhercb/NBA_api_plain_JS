@@ -5,6 +5,8 @@ import {
   controlTeamsPlayer as teamsControlTeamsPlayer,
 } from "../controllers/teamsController";
 
+import { controlPlayer } from "../controllers/playersController";
+
 const router = new Router({
   mode: "hash",
   root: "/",
@@ -16,4 +18,7 @@ router
   })
   .add(/teams/, () => {
     teamsControlTeams();
+  })
+  .add(/players\/(.*)/, (playerID) => {
+    controlPlayer(playerID);
   });

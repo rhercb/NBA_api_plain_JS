@@ -11,7 +11,7 @@ class TeamsView extends View {
   }
 
   _generatePlayersMarkup(data) {
-    return `<a class="player__wrapper col-3">
+    return `<a href="/#/players/${data.id}" class="player__wrapper col-3">
                 <div class="player__image">
                     <img src="${data.photo}">
                 </div>                

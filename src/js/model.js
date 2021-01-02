@@ -3,6 +3,7 @@ import {
   API_KEY,
   API_TEAMS_CALL_URL,
   API_TEAMS_PLAYERS_CALL_URL,
+  API_PLAYER_DATA_URL,
 } from "./config";
 import { AJAX } from "./helper";
 
@@ -10,6 +11,10 @@ export const appData = {
   teams: {
     data: [],
     players: [],
+  },
+  player: {
+    data: {},
+    stats: [],
   },
 };
 
@@ -75,6 +80,40 @@ export const loadTeamsPlayers = async function (teamKey) {
     data.forEach((element) => {
       appData.teams.players.push(createTeamPlayerData(element));
     });
+  } catch (err) {
+    throw err;
+  }
+};
+
+const createPlayerInfoData = function (data) {
+  return {
+    id: data.PlayerID,
+    team: data.Team,
+    jersey: data.Jersey,
+    positionCategory: data.PositionCategory,
+    position: data.Position,
+    name: data.FirstName,
+    surname: data.LastName,
+    height: data.Height,
+    weight: data.Weight,
+    birth: data.BirthDate,
+    birthCity: data.BirthCity,
+    college: data.College,
+    salary: data.Sallary,
+    photo: data.PhotoUrl,
+    experience: data.Experience,
+  };
+};
+
+export const loadPlayerInfoData = async function (playerID) {
+  try {
+    appData.player.data = {};
+
+    const data = await AJAX(
+      `${API_URL}${API_PLAYER_DATA_URL}${playerID}?key=${API_KEY}`
+    );
+
+    appData.player.data = createPlayerInfoData(data);
   } catch (err) {
     throw err;
   }
