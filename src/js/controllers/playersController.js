@@ -19,4 +19,12 @@ const controlPlayer = async function (playerID) {
   }
 };
 
-export { controlPlayer };
+const controlPlayerSeasonStats = async function (playerID) {
+  try {
+    await playerModel.loadPlayerSeasonStatsData(playerID);
+  } catch (err) {
+    playerInfoView.renderError();
+  }
+};
+
+export { controlPlayer, controlPlayerSeasonStats };

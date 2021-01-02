@@ -5,7 +5,10 @@ import {
   controlTeamsPlayer as teamsControlTeamsPlayer,
 } from "../controllers/teamsController";
 
-import { controlPlayer } from "../controllers/playersController";
+import {
+  controlPlayer,
+  controlPlayerSeasonStats,
+} from "../controllers/playersController";
 
 const router = new Router({
   mode: "hash",
@@ -21,4 +24,5 @@ router
   })
   .add(/players\/(.*)/, (playerID) => {
     controlPlayer(playerID);
+    controlPlayerSeasonStats(playerID);
   });
