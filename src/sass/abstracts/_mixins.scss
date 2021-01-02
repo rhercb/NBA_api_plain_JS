@@ -2,7 +2,7 @@
 
 @mixin colorMixin($el) {
   @each $team, $colors in $teamColors {
-    .#{$team} {
+    #{$el}.#{$team} {
       $color-map: () !global;
       @each $key, $submap in $colors {
         $value: map-get(map-get($teamColors, $team), "#{$key}");
