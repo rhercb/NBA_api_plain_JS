@@ -86,3 +86,49 @@ export const convertSalary = function (salary) {
 
   return newSalary.format(salary);
 };
+
+/**
+ * Function that converts position category short format to full name
+ * @param {String} positionCategory Position category, example - G
+ */
+export const convertPlayerPositionCategory = function (positionCategory) {
+  const categories = {
+    G: "Guard",
+    F: "Forward",
+    C: "Center",
+  };
+
+  let position = "";
+  const items = Object.keys(categories);
+  items.map((key) => {
+    if (key === positionCategory) {
+      position = categories[positionCategory];
+    }
+  });
+
+  return position;
+};
+
+/**
+ * Function that converts player position short format to full name
+ * @param {String} playerPosition Player position, example PG
+ */
+export const convertPlayerPosition = function (playerPosition) {
+  const categories = {
+    PG: "Point Guard",
+    SG: "Shooting Guard",
+    SF: "Small Forward",
+    PF: "Power Forward",
+    C: "Center",
+  };
+
+  let position = "";
+  const items = Object.keys(categories);
+  items.map((key) => {
+    if (key === positionCategory) {
+      position = categories[playerPosition];
+    }
+  });
+
+  return position;
+};
