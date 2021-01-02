@@ -8,7 +8,7 @@ class PlayerInfoView extends View {
 
   _generateMarkup() {
     return `
-      <div class="player-info-banner">
+      <div class="player-info-banner ${this._data.team}">
         <div class="about-player container">
           <div class="player-number">#${this._data.jersey}</div>
           <div class="player-image">

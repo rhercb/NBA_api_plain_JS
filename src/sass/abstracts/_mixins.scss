@@ -1,0 +1,24 @@
+@import "../abstracts//variables";
+
+@mixin colorMixin($el) {
+  @each $team, $colors in $teamColors {
+    .#{$team} {
+      $color-map: () !global;
+      @each $key, $submap in $colors {
+        $value: map-get(map-get($teamColors, $team), "#{$key}");
+        $color-map: map-merge(
+          $color-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $color-map: null !global;
+    }
+  }
+}
+
+@function color-picker($key) {
+  @return map-get($color-map, $key);
+}

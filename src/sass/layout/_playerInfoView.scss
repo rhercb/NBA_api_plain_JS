@@ -1,45 +1,50 @@
-.about-player {
-  position: relative;
-  padding-top: 2rem;
-  display: flex;
+@import "../abstracts/_mixins.scss";
 
-  .player-number,
-  .player-position {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border: 1px solid red;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    padding: 0.25rem;
-    top: 0;
-    left: 0;
-  }
-  .player-number {
-    top: 2rem;
-  }
-  .player-image {
-    margin-left: 4rem;
-    img {
-      width: 150px;
-    }
-  }
-  .player-info {
+@include colorMixin(".player-info-banner") {
+  background-color: color-picker($primary-color);
+  .about-player {
     position: relative;
+    padding-top: 2rem;
     display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: center;
-    padding: 0 3rem;
-    font-size: 2.5rem;
-  }
-  .player-desc {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: space-between;
+
+    .player-number,
+    .player-position {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 1px solid color-picker($primary-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      padding: 0.25rem;
+      top: 0;
+      left: 0;
+    }
+    .player-number {
+      top: 2rem;
+    }
+    .player-image {
+      margin-left: 4rem;
+      img {
+        width: 150px;
+      }
+    }
+    .player-info {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      justify-content: center;
+      padding: 0 3rem;
+      font-size: 2.5rem;
+    }
+    .player-desc {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      justify-content: space-between;
+    }
   }
 }
