@@ -1,4 +1,4 @@
-import * as model from "../model";
+import * as playerModel from "../models/playersModel";
 
 import View from "../views/View";
 import playerInfoView from "../views/players/playerInfoView";
@@ -9,11 +9,11 @@ const controlPlayer = async function (playerID) {
   try {
     spinner.renderSpinner();
 
-    await model.loadPlayerInfoData(playerID);
+    await playerModel.loadPlayerInfoData(playerID);
 
     spinner.removeSpinner();
 
-    playerInfoView.render(model.appData.player.data);
+    playerInfoView.render(playerModel.playerData.data);
   } catch (err) {
     console.log(err);
   }

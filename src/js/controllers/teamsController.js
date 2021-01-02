@@ -1,4 +1,4 @@
-import * as model from "../model";
+import * as teamModel from "../models/teamsModel";
 import View from "../views/View";
 import teamsInfoView from "../views/Teams/teamsInfoView";
 import teamsView from "../views/Teams/teamsView";
@@ -9,11 +9,11 @@ const controlTeams = async function () {
   try {
     spinner.renderSpinner();
 
-    await model.loadTeams();
+    await teamModel.loadTeams();
 
     spinner.removeSpinner();
 
-    teamsView.render(model.appData.teams.data);
+    teamsView.render(teamModel.teamData.data);
   } catch (err) {
     teamsView.renderError();
   }
@@ -23,11 +23,11 @@ const controlTeamsPlayer = async function (teamKey) {
   try {
     spinner.renderSpinner();
 
-    await model.loadTeamsPlayers(teamKey);
+    await teamModel.loadTeamsPlayers(teamKey);
 
     spinner.removeSpinner();
 
-    teamsInfoView.render(model.appData.teams.players);
+    teamsInfoView.render(teamModel.teamData.players);
   } catch (err) {
     console.error(err);
   }
