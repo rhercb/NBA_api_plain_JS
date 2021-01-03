@@ -6,10 +6,17 @@
   flex-direction: row;
   align-items: center;
   border-radius: 5px;
-  margin-bottom: 1rem;
+
   padding: 0;
   padding: 1rem;
   text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  &:nth-child(odd) {
+    margin: 0.5rem 0.75rem 0.5rem 0;
+  }
+  &:nth-child(even) {
+    margin: 0.5rem 0 0.5rem 0.75rem;
+  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -22,8 +29,8 @@
   .team__image {
     transition: all 2s;
     img {
-      width: 15rem;
-      height: 15rem;
+      width: 150px;
+      height: 150px;
       object-fit: contain;
     }
   }

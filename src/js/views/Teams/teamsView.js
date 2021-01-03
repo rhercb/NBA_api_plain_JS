@@ -1,7 +1,7 @@
 import View from "../View";
 
 class TeamsView extends View {
-  _parentElement = document.getElementById("teams-list");
+  _parentElement = document.querySelector(".teams__list--wrapper");
   _errorMessage = "Sorry, but we could not get a data from API call.";
 
   addHandlerShowTeamPlayers(handler) {
@@ -20,7 +20,7 @@ class TeamsView extends View {
   }
 
   _generateSingleMarkup(data) {
-    return `<a href="#/teams/${data.key}" data-team-key="${data.key}" class="team__wrapper ${data.key} col-12">
+    return `<a href="#/teams/${data.key}" data-team-key="${data.key}" class="team__wrapper ${data.key} col-6">
                 <div class="team__image">
                     <img src="${data.logo}"/>
                 </div>
