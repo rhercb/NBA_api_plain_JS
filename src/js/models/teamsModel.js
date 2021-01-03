@@ -51,6 +51,7 @@ const createTeamPlayerData = function (data) {
     jersey: data.Jersey,
     positionCategory: data.PositionCategory,
     position: data.Position,
+    positionCategory: data.PositionCategory,
     name: data.FirstName,
     surname: data.LastName,
     height: data.Height,
