@@ -1,0 +1,11 @@
+@function calculate-rems($pixels) {
+  @return (strip-units($pixels) / 16) * 1rem;
+}
+
+@function strip-units($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

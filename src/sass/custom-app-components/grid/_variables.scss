@@ -1,0 +1,44 @@
+@import "../utils/mixins";
+
+$mobile: "mobile";
+$mobile--lg: "mobile--lg";
+$tablet: "tablet";
+$tablet--lg: "tablet--lg";
+$desktop: "desktop";
+$desktop--lg: "desktop--lg";
+
+$grid: (
+  "container-width": (
+    mobile: calculate-rems(320),
+    mobile--lg: calculate-rems(460),
+    tablet: calculate-rems(720),
+    tablet--lg: calculate-rems(980),
+    desktop: calculate-rems(1140),
+    desktop--lg: calculate-rems(1340),
+  ),
+  "column-count": (
+    mobile: 4,
+    mobile--lg: 4,
+    tablet: 8,
+    tablet--lg: 8,
+    desktop: 12,
+    desktop--lg: 12,
+  ),
+  "column-gap": (
+    mobile: calculate-rems(8),
+    mobile--lg: calculate-rems(8),
+    tablet: calculate-rems(16),
+    tablet--lg: calculate-rems(16),
+    desktop: calculate-rems(24),
+    desktop--lg: calculate-rems(24),
+  ),
+);
+
+$grid-breakpoints: (
+  mobile: calculate-rems(320),
+  mobile--lg: calculate-rems(460),
+  tablet: calculate-rems(720),
+  tablet--lg: calculate-rems(980),
+  desktop: calculate-rems(1140),
+  desktop--lg: calculate-rems(1340),
+);

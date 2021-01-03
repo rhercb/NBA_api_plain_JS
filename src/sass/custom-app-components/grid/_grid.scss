@@ -1,0 +1,42 @@
+@import "./variables";
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+@each $breakpoint, $value in $grid-breakpoints {
+  @media all and (min-width: $value) {
+    .container {
+      width: calc(100% - 1rem);
+      max-width: map-deep-get($grid, "container-width", $desktop--lg);
+      padding: 0 1rem;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      position: relative;
+      width: 100%;
+      grid-template-columns: repeat(
+        map-deep-get($grid, "column-count", $breakpoint),
+        1fr
+      );
+      grid-column-gap: map-deep-get($grid, "column-gap", $breakpoint);
+    }
+
+    @for $i from 1 through 12 {
+      .col-#{$breakpoint}-#{$i} {
+        grid-column: span #{$i};
+      }
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span #{$i};
+  }
+}
