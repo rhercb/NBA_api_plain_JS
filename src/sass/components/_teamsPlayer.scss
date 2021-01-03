@@ -8,19 +8,7 @@
 @include colorMixin(".player__wrapper") {
   padding: 1rem 0;
   position: relative;
-  flex: 0 0 calc((100% / 3) - (32px * 8 / 12));
-  &:not(:nth-child(3n + 1)) {
-    margin-left: 2rem;
-    &:before {
-      content: "";
-      position: absolute;
-      left: calc(32px / -2);
-      top: 0;
-      width: 1px;
-      height: 100%;
-      background: color-picker($quaternary-color);
-    }
-  }
+
   &:after {
     background: color-picker($quaternary-color);
     content: "";
@@ -93,7 +81,6 @@
     height: 100%;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 2.5rem;
     opacity: 0;
     transition: opacity 250ms ease-out;
     background: linear-gradient(
@@ -105,7 +92,7 @@
       list-style: none;
       font-weight: 500;
       font-size: 0.75rem;
-      padding: 0;
+      padding: 0 2rem;
       line-height: 1.1;
       color: color-picker($quaternary-color);
       li {

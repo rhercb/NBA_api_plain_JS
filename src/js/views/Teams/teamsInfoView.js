@@ -15,7 +15,9 @@ class TeamsView extends View {
   _generatePlayersMarkup(data) {
     this._parentElement.classList.add(data.team);
 
-    return `<div class="player__wrapper ${data.team}">
+    return `<div class="player__wrapper ${
+      data.team
+    } col-mobile-4 col-tablet-4 col-desktop-4">
               <div class="team__player--header">                    
                 <p class="player__about--jersey">${data.jersey}</p>
                 <div class="team__player--data">
