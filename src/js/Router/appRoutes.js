@@ -5,6 +5,7 @@ import View from "../views/View";
 import {
   controlTeams as teamsControlTeams,
   controlTeamsPlayer as teamsControlTeamsPlayer,
+  init as teamsControllerInitialization,
 } from "../controllers/teamsController";
 
 import {
@@ -29,6 +30,7 @@ router
     view.renderBodyElements("teams-list");
 
     teamsControlTeams();
+    teamsControllerInitialization();
   })
   .add(/players\/(.*)/, (playerID) => {
     view.renderBodyElements("player-info");

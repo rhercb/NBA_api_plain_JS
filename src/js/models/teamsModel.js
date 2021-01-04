@@ -9,6 +9,7 @@ import { AJAX } from "../helper";
 export const teamData = {
   data: [],
   players: [],
+  sort: "",
 };
 
 /**

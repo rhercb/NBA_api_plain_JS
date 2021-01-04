@@ -32,6 +32,28 @@ class TeamsView extends View {
                 </div>
             </a>`;
   }
+
+  /**
+   * Hides element with specific key
+   * @param {String} key
+   */
+  hideElement(key) {
+    const elementList = this._parentElement.children;
+    for (let item of elementList) {
+      item.dataset.teamKey === key ? item.classList.add("hidden") : "";
+    }
+  }
+
+  /**
+   * Shows element with specific key
+   * @param {String} key
+   */
+  showElement(key) {
+    const elementList = this._parentElement.children;
+    for (let item of elementList) {
+      item.dataset.teamKey === key ? item.classList.remove("hidden") : "";
+    }
+  }
 }
 
 export default new TeamsView();
