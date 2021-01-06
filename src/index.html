@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>API project</title>
 </head>
 <body>
+  <div id="modalOverlay" class="modal__overlay hidden"></div>
+  <div id="modal" class="modal hidden">
+    <div class="modal__header">
+      <p class="modal__header--title"></p>
+      <i id="modalClose" class="material-icons">close</i>
+    </div>
+    <div class="modal__body"></div>
+  </div>
     <div id="navigation" class="container-fluid">
       <div class="navigation">
         <div class="navigation__logo">
