@@ -30,6 +30,14 @@
         margin: calculate-rems(5) 0;
       }
     }
+
+    .schedule__btn {
+      font-size: 2rem;
+      padding: calculate-rems(8);
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
   .schedule__wrapper {
     display: grid;

@@ -4,8 +4,11 @@ import * as helper from "../../helper";
 
 class ScheduleView extends View {
   _parentElement = document.querySelector(".schedule-body");
+
+  _scheduleHeader = document.querySelector(".schedule-head");
   _scheduleHeadYear = document.querySelector(".schedule__year");
   _scheduleHeadMonth = document.querySelector(".schedule__month");
+
   _errorMessage = "Sorry, but we could not get infomation about this team";
 
   _generateMarkup() {}
@@ -28,23 +31,28 @@ class ScheduleView extends View {
 
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    const date = new Date();
-    const thisYear = date.getFullYear();
-    const thisMonth = date.getMonth();
-    const thisDate = date.getDate();
-    const thisMontDays = new Date(thisYear, thisMonth + 1, 0).getDate(); // Number or days in month month + 1 to get net month, and 0 gets back to previous
-    const thisMonthFirstDay = new Date(thisYear, thisMonth, 1).getDay(); // First day in month
-    const thisMonthLastDay = new Date(thisYear, thisMonth + 1, 0).getDay(); // Last day in month
+    let date = new Date();
+    let thisYear = date.getFullYear();
+    let thisMonth = date.getMonth();
+    let thisDate = date.getDate();
+    let thisMontDays = new Date(thisYear, thisMonth + 1, 0).getDate(); // Number or days in month month + 1 to get net month, and 0 gets back to previous
+    let thisMonthFirstDay = new Date(thisYear, thisMonth, 1).getDay(); // First day in month
+    let thisMonthLastDay = new Date(thisYear, thisMonth + 1, 0).getDay(); // Last day in month
     //const previousMonthDays = new Date(thisYear, thisMonth, 0).getDate(); // Number or days in last month
 
-    console.log(
-      thisDate,
-      months[thisMonth],
-      thisYear,
-      thisMontDays,
-      thisMonthFirstDay,
-      thisMonthLastDay
-    );
+    this._scheduleHeader.addEventListener("click", function (e) {
+      const step = e.target.closest(".schedule__btn");
+      if (!step) return;
+
+      // If nextmonth is pressed, then change month and year if needed, else decrease mont and year
+      step.id === "scheduleNextMonth"
+        ? thisMonth === 11
+          ? ((thisMonth = 1), (thisYear = thisYear + 1))
+          : (thisMonth = thisMonth + 1)
+        : thisMonth === 0
+        ? ((thisMonth = 11), (thisYear = thisYear - 1))
+        : (thisMonth = thisMonth - 1);
+    });
 
     // If first day of month is Sunday, then replace 0 with 7
     let calendarMonthFirstDay =
@@ -75,7 +83,6 @@ class ScheduleView extends View {
         }</div>`;
       }
     }
-    console.log(schedule);
     this._parentElement.appendChild(schedule);
   }
 }
