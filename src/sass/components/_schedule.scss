@@ -1,0 +1,52 @@
+@import "../custom-app-components/utils/mixins";
+
+.schedule-wrapper {
+  max-width: calculate-rems(700);
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: calculate-rems(5);
+
+  .schedule-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: calculate-rems(12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+
+    .schedule__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: calculate-rems(5);
+
+      p {
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: 400;
+        margin: calculate-rems(5) 0;
+      }
+    }
+  }
+  .schedule__wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    .schedule__weekdays {
+      padding: calculate-rems(5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .schedule__days {
+      padding: calculate-rems(5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
