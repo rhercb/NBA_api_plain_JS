@@ -132,3 +132,126 @@ export const convertPlayerPosition = function (playerPosition) {
 
   return position;
 };
+
+/**
+ * Function that returns data about schedule.
+ */
+export const getCalendarData = function () {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  const date = new Date();
+  let thisYear = date.getFullYear();
+  let thisMonth = date.getMonth();
+  let thisDate = date.getDate();
+
+  let [
+    thisMontDays,
+    thisMonthFirstDay,
+    thisMonthLastDay,
+    previousMnthDays,
+    previousMonthFirstDay,
+    nextMonthDays,
+    nextMonthFirstDay,
+  ] = getCalendarPreviousNext(thisYear, thisMonth);
+
+  return {
+    monthArray: months,
+    daysArray: days,
+    date: date,
+    currentYear: thisYear,
+    currentMonth: thisMonth,
+    currentDate: thisDate,
+    currentMonthDayCount: thisMontDays,
+    currentMontFirstDay: thisMonthFirstDay,
+    currentMonthLastDay: thisMonthLastDay,
+    prevMonthDayCount: previousMnthDays,
+    prevMonthFirstDay: previousMonthFirstDay,
+    nextMonthDayCount: nextMonthDays,
+    nextMonthFirstDay: nextMonthFirstDay,
+  };
+};
+
+/**
+ * Recieves current year and current month and return information about previous and next month
+ * @param {Number} year This year
+ * @param {Number} month This month
+ */
+const getCalendarPreviousNext = function (year, month) {
+  let thisMontDays = new Date(year, month + 1, 0).getDate(); // Number or days in month month + 1 to get net month, and 0 gets back to previous
+  let thisMonthFirstDay = new Date(year, month, 1).getDay(); // First day in month
+  let thisMonthLastDay = new Date(year, month + 1, 0).getDay(); // Last day in month
+  let previousMonthDays = new Date(year, month, 0).getDate(); // Number or days in last month
+  let previousMonthFirstDay = new Date(year, month, 0).getDay(); //
+  let nextMonthDays = new Date(year, month + 2, 0).getDate(); // Number of days in next month
+  let nextMonthFirstDay = new Date(year, month + 1, 1).getDay();
+
+  return [
+    thisMontDays,
+    thisMonthFirstDay,
+    thisMonthLastDay,
+    previousMonthDays,
+    previousMonthFirstDay,
+    nextMonthDays,
+    nextMonthFirstDay,
+  ];
+};
+
+/**
+ * When a month in a calendar is changed, the function updates year, month and calendar layout
+ * @param {Object} data Data about calendar
+ * @param {HTML Element} step Html parent element of step arrows
+ */
+export const changeScheduleData = function (data, step) {
+  // If nextmonth is pressed, then change month and year if needed, else decrease mont and year
+
+  if (step.id === "scheduleNextMonth") {
+    if (data.currentMonth === 11) {
+      data.currentMonth = 1;
+      data.currentYear = data.currentYear + 1;
+    } else {
+      data.currentMonth = data.currentMonth + 1;
+    }
+  } else {
+    if (data.currentMonth === 0) {
+      data.currentMonth = 11;
+      data.currentYear = data.currentYear - 1;
+    } else {
+      data.currentMonth = data.currentMonth - 1;
+    }
+  }
+
+  let [
+    thisMontDays,
+    thisMonthFirstDay,
+    thisMonthLastDay,
+    previousMnthDays,
+    previousMonthFirstDay,
+    nextMonthDays,
+    nextMonthFirstDay,
+  ] = getCalendarPreviousNext(data.currentYear, data.currentMonth);
+
+  data.currentMonthDayCount = thisMontDays;
+  data.currentMontFirstDay = thisMonthFirstDay;
+  data.currentMonthLastDay = thisMonthLastDay;
+
+  data.nextMonthDayCount = nextMonthDays;
+  data.nextMonthFirstDay = nextMonthFirstDay;
+
+  data.prevMonthDayCount = previousMnthDays;
+  data.prevMonthFirstDay = previousMonthFirstDay;
+};

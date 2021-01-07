@@ -13,6 +13,11 @@ import {
   controlPlayerSeasonStats,
 } from "../controllers/playersController";
 
+import {
+  constrollSchedule,
+  init as controllScheduleInit,
+} from "../controllers/scheduleController";
+
 const router = new Router({
   mode: "hash",
   root: "/",
@@ -37,4 +42,10 @@ router
 
     controlPlayer(playerID);
     controlPlayerSeasonStats(playerID);
+  })
+  .add(/schedule/, () => {
+    view.renderBodyElements("schedule");
+
+    constrollSchedule();
+    controllScheduleInit();
   });
