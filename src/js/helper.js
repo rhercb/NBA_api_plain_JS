@@ -75,6 +75,60 @@ export const convertDate = function (date) {
 };
 
 /**
+ * Converts date to example - 2021-JAN-01.
+ * @param {String} date
+ */
+export const convertDateForSpecificDayGames = function (date) {
+  const months = [
+    "",
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+
+  const oldDate = new Date(date);
+
+  const newDate = `${oldDate.getFullYear()}-${months[oldDate.getMonth() + 1]}-${
+    oldDate.getDate() < 10 ? "0" + oldDate.getDate() : oldDate.getDate()
+  }`;
+
+  return newDate;
+};
+
+/**
+ * Return date in new Format and counts repeating data to show how many games are in that day
+ * @param {Array of Objects} data
+ */
+export const getGameCountInDay = function (data) {
+  const dates = [];
+
+  data.map((el) => {
+    const oldDate = new Date(el.Day);
+
+    const newDate = `${oldDate.getFullYear()}-${
+      oldDate.getMonth() + 1
+    }-${oldDate.getDate()}`;
+
+    dates.push(newDate);
+  });
+
+  const map = dates.reduce((prev, curr) => {
+    prev[curr] = (prev[curr] || 0) + 1;
+    return prev;
+  }, {});
+
+  return map;
+};
+
+/**
  * Converts salary to USD with all commas
  * @param {Number} salary Sallary number
  */
@@ -255,26 +309,3 @@ export const changeScheduleData = function (data, step) {
   data.prevMonthDayCount = previousMnthDays;
   data.prevMonthFirstDay = previousMonthFirstDay;
 };
-
-export const getGameCountInDay = function (data) {
-  const dates = [];
-
-  data.map((el) => {
-    const oldDate = new Date(el.Day);
-
-    const newDate = `${oldDate.getFullYear()}-${
-      oldDate.getMonth() + 1
-    }-${oldDate.getDate()}`;
-
-    dates.push(newDate);
-  });
-
-  const map = dates.reduce((prev, curr) => {
-    prev[curr] = (prev[curr] || 0) + 1;
-    return prev;
-  }, {});
-
-  return map;
-};
-
-export const getObjectValueFromKey = function () {};

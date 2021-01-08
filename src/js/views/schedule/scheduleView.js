@@ -32,7 +32,6 @@ class ScheduleView extends View {
       if (!date) return;
 
       const fullDate = date.dataset.date;
-      console.log(fullDate);
       handler(fullDate);
     });
   }
@@ -69,7 +68,9 @@ class ScheduleView extends View {
       if (i < calendarMonthFirstDay) {
         schedule.innerHTML += `<div></div>`;
       } else {
-        schedule.innerHTML += `<div data-date="${date}" class="schedule__days"><span class="schedule__days--date">${
+        schedule.innerHTML += `<div data-date="${helper.convertDateForSpecificDayGames(
+          date
+        )}" class="schedule__days"><span class="schedule__days--date">${
           i - calendarMonthFirstDay + 1
         }</span><span class="schedule__days--games">${
           this._data.gamesByDate[date]

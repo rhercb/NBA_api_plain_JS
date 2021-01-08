@@ -28,10 +28,18 @@ const controllChangeSchedule = async function () {
   scheduleView.render(data);
 };
 
-const controllShowDateGames = function () {};
+const controllShowDateGames = async function (date) {
+  try {
+    const data = await scheduleModel.loadGamesForDay(date);
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 const init = function () {
   scheduleView.addHandlerChangeDate(calendarData, controllChangeSchedule);
+  scheduleView.addHandlerDateClick(controllShowDateGames);
 };
 
 export { constrollSchedule, init };
