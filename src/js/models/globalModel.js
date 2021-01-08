@@ -6,7 +6,7 @@ export const getCurrentSeason = async function () {
     const data = await AJAX(
       `${API_URL}${API_CURRENT_SEASON_URL}?key=${API_KEY}`
     );
-    return data.StartYear;
+    return [data.StartYear, data.EndYear, data.ApiSeason];
   } catch (err) {
     throw err;
   }

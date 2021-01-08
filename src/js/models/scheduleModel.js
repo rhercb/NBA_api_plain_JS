@@ -1,10 +1,17 @@
-import {
-  API_URL,
-  API_KEY,
-  API_PLAYER_DATA_URL,
-  API_PLAYER_SEASON_STATS_URL,
-} from "../config";
+import { API_URL, API_KEY, API_SEASON_DATA_URL } from "../config";
 import { AJAX } from "../helper";
-import * as globalModel from "./globalModel";
+import { getCurrentSeason } from "../models/globalModel";
 
-export const loadCalendarData = function () {};
+export const loadCalendarGameData = async function () {
+  try {
+    const season = await getCurrentSeason();
+    const [, , seasonName] = season;
+
+    const data = await AJAX(
+      `${API_URL}${API_SEASON_DATA_URL}${seasonName}?key=${API_KEY}`
+    );
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};

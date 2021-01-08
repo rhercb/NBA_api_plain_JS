@@ -255,3 +255,26 @@ export const changeScheduleData = function (data, step) {
   data.prevMonthDayCount = previousMnthDays;
   data.prevMonthFirstDay = previousMonthFirstDay;
 };
+
+export const getGameCountInDay = function (data) {
+  const dates = [];
+
+  data.map((el) => {
+    const oldDate = new Date(el.Day);
+
+    const newDate = `${oldDate.getFullYear()}-${
+      oldDate.getMonth() + 1
+    }-${oldDate.getDate()}`;
+
+    dates.push(newDate);
+  });
+
+  const map = dates.reduce((prev, curr) => {
+    prev[curr] = (prev[curr] || 0) + 1;
+    return prev;
+  }, {});
+
+  return map;
+};
+
+export const getObjectValueFromKey = function () {};

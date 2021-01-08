@@ -26,6 +26,17 @@ class ScheduleView extends View {
     });
   }
 
+  addHandlerDateClick(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const date = e.target.closest(".schedule__days");
+      if (!date) return;
+
+      const fullDate = date.dataset.date;
+      console.log(fullDate);
+      handler(fullDate);
+    });
+  }
+
   _generateMarkup() {
     this._clear();
     // If first day of month is Sunday, then replace 0 with 7
@@ -52,12 +63,19 @@ class ScheduleView extends View {
 
     // Add date to schedule, but remove first empty dates from previous month
     for (let i = 1; i < calendarLength; i++) {
+      let date = `${this._data.currentYear}-${this._data.currentMonth + 1}-${
+        i - calendarMonthFirstDay + 1
+      }`;
       if (i < calendarMonthFirstDay) {
         schedule.innerHTML += `<div></div>`;
       } else {
-        schedule.innerHTML += `<div class="schedule__days">${
+        schedule.innerHTML += `<div data-date="${date}" class="schedule__days"><span class="schedule__days--date">${
           i - calendarMonthFirstDay + 1
-        }</div>`;
+        }</span><span class="schedule__days--games">${
+          this._data.gamesByDate[date]
+            ? this._data.gamesByDate[date] + " games"
+            : ""
+        }</span></div>`;
       }
     }
 
